@@ -1,5 +1,5 @@
-# Hackerrank-SQL-query-advance/ Weather Analysis
-
+# Hackerrank-SQL-query-advance
+### / Weather Analysis
 There is a table with daily weather data over the last 6 months of 2020, including the maximum, minimum, and average temperatures.
 
 Write a query that gives month, monthly maximum, monthly minimum, monthly average temperatures for the six months.
