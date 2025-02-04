@@ -1,5 +1,5 @@
 # Hackerrank-SQL-query-advance
-### / Weather Analysis
+### 1./ Weather Analysis
 There is a table with daily weather data over the last 6 months of 2020, including the maximum, minimum, and average temperatures.
 
 Write a query that gives month, monthly maximum, monthly minimum, monthly average temperatures for the six months.
@@ -39,4 +39,35 @@ SELECT
 FROM MaxTemp M
 JOIN MinTemp N ON M.R = N.R
 JOIN AvgTemp A ON M.R = A.R;
+```
+
+### 2./ Crypto Market Transactions Monitoring
+Crypto Market Transaction Monitoring Solution
+
+```
+WITH df AS (
+  SELECT *,
+         TIMESTAMPDIFF(MINUTE, LAG(dt) OVER (PARTITION BY sender ORDER BY dt), dt) AS df_minute
+  FROM transactions
+),
+rn AS (
+  SELECT *,
+         SUM(CASE WHEN df_minute IS NULL OR df_minute >= 60 THEN 1 ELSE 0 END) 
+         OVER (PARTITION BY sender ORDER BY dt) AS sequence_id
+  FROM df
+),
+ss AS (
+  SELECT sender,
+         sequence_id,
+         MIN(dt) AS sequence_start,
+         MAX(dt) AS sequence_end,
+         COUNT(*) AS transactions_count,
+         ROUND(SUM(amount), 6) AS transactions_sum
+  FROM rn
+  GROUP BY sender, sequence_id
+  HAVING transactions_sum >= 150
+)
+SELECT sender, sequence_start, sequence_end, transactions_count, transactions_sum
+FROM ss
+ORDER BY sender, sequence_start, sequence_end;
 ```
