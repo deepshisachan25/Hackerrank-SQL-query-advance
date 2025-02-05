@@ -2,9 +2,8 @@
 ### 1./ Weather Analysis
 There is a table with daily weather data over the last 6 months of 2020, including the maximum, minimum, and average temperatures.
 
-Write a query that gives month, monthly maximum, monthly minimum, monthly average temperatures for the six months.
-
-Note: Round the average to the nearest integer.
+![image](https://github.com/user-attachments/assets/b2f73c33-0671-4090-a76c-deccd4cd654a)
+![image](https://github.com/user-attachments/assets/d0e715a5-437a-401d-a6e1-6b364a78382e)
 
 ``` 
 WITH MaxTemp AS (
@@ -43,6 +42,8 @@ JOIN AvgTemp A ON M.R = A.R;
 
 ### 2./ Crypto Market Transactions Monitoring
 Crypto Market Transaction Monitoring Solution
+![image](https://github.com/user-attachments/assets/3268cace-0d27-4e45-a7ef-5c5f1a90e397)
+![image](https://github.com/user-attachments/assets/eb735d66-1d3e-45e9-878a-ec88c23c9ed9)
 
 ```
 WITH df AS (
